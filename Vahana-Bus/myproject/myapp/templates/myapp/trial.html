@@ -1,0 +1,13 @@
+<select name = 'source' id = "source" class = "form-control">
+    {% for item in buses %}
+      <option value = "{{ item.source }}">{{ item.source }}</option>
+    {% endfor %}
+</select>
+
+
+<form action="{% url 'addbus' %}" method="post">
+  {% csrf_token %}
+  <div class = 'add bus', style="position: absolute;">
+      <button type = "submit" > Add Bus </button>
+  </div>
+</form>

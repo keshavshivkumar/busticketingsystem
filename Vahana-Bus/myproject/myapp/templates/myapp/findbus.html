@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-sm-6 mx-auto" style="margin-top: 70px">
+                <h2>Find bus</h2>
+                <form action="{% url 'findbus' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-2 col-form-label">From</label>
+                        <div class="col-10">
+                            <input list="source" name = 'source' id = "example-email-input" class = "form-control">
+                                <datalist id = "source">
+                                {% for item in buses %}
+                                  <option value = "{{ item.source }}" name = 'source'>{{ item.source }}</option>
+                                {% endfor %}
+                                </datalist>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-2 col-form-label">To</label>
+                        <div class="col-10">
+                            <input list="destination" name = 'destination' id = "example-email-input" class = "form-control">
+                                <datalist id = "destination">
+                                {% for item in buses %}
+                                  <option value = "{{ item.dest }}" name = 'destination'>{{ item.dest }}</option>
+                                {% endfor %}
+                                </datalist>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-2 col-form-label" >Date</label>
+                        <div class="col-10">
+                            <input name='date' class="form-control" type="date">
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success float-right">Find bus</button>
+                    </div>
+                    {{error}}
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

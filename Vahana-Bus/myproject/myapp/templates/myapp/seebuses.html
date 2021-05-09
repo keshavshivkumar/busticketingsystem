@@ -1,0 +1,81 @@
+{% extends 'myapp/operatorbase.html' %}
+{% block content %}
+<h3>{{msg}}</h3>
+<head>
+    <title>View Buses
+        </title>
+</head>
+<!-- <table>
+    <thead style="background-color: blue;color: white;">
+    <td>ID</td>
+    <td>NAME</td>
+    <td>SOURCE</td>
+    <td>DESTINATION</td>
+    <td>NUM OF SEATS</td>
+    <td>REM SEATS</td>
+    <td>PRICE</td>
+    <td>DATE</td>
+    <td>TIME</td>
+    </thead>
+
+    {% for row in buses %}
+    <tr>
+        <td>{{row.id }}</td>
+        <td>{{row.bus_name}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.dest}}</td>
+        <td>{{row.nos}}</td>
+        <td>{{row.rem}}</td>
+        <td>{{row.price}}</td>
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+    </tr>
+    {% endfor %}
+</table> -->
+
+<div style = "position : absolute; left : 50px; top : 60px; padding : 40px;">
+    <h2>List of buses</h2>
+</div>
+<div style = "position : absolute; left : 50px; top : 100px; padding : 40px;" >
+    <table style="width: 1200px">
+    <thead style="background-color: blue;color: white;">
+    <td>ID</td>
+    <td>NAME</td>
+    <td>SOURCE</td>
+    <td>DESTINATION</td>
+    <td>NUM OF SEATS</td>
+    <td>REM SEATS</td>
+    <td>PRICE</td>
+    <td>DATE</td>
+    <td>TIME</td>
+    </thead>
+
+    {% for row in buses %}
+    <tr>
+        <td>{{row.id}}</td>
+        <td>{{row.bus_name}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.dest}}</td>
+        <td>{{row.nos}}</td>
+        <td>{{row.rem}}</td>
+        <td>{{row.price}}</td>
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+        <td>
+            <form action="{% url 'deletebus' %}" method="post">
+                {% csrf_token %}
+                <button type = "submit" value = "{{row.bus_name}}" name = 'bus_name'> Delete Bus </button>
+            </form>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+<form action="{% url 'addbus' %}" method="post">
+    {% csrf_token %}
+    <div class = 'add bus', style="position: absolute;">
+        <button type = "submit" > Add Bus </button>
+    </div>
+</form>
+</div>
+{% endblock %}
