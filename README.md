@@ -1,4 +1,4 @@
-# OOAD-project
+# Bus Ticketing System
 Bus Ticket booking system using Django.Users and can view, book buses and cancel bookings while operators can put busus into service.
 It is recommended to perform all the following steps in a virtual environment.
 To run the code, first cd into the directory with the manage.py file.
